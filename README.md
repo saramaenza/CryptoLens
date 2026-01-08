@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -68,3 +69,7 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+=======
+# CryptoLens
+CryptoLens is a modern, interactive cryptocurrency dashboard built with React and Tailwind CSS. It provides real-time market data, historical price charts, and customizable favorites, allowing users to track and analyze top cryptocurrencies with an intuitive and responsive interface.
+>>>>>>> 9b6a8ae8810453cc2f1467c7c44437605915d0ae
