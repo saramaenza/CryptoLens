@@ -43,7 +43,7 @@ function App() {
 
   return (
     <>
-      <div className="flex flex-col min-h-screen">
+      <div className="flex flex-col">
         <Header 
           allCryptos={allCryptos}
           onSelectCrypto={setSelectedCrypto}
@@ -56,7 +56,7 @@ function App() {
             onSelectCrypto={setSelectedCrypto}
             darkMode={darkMode}
           />
-          <main className="flex-1 px-2 pb-4 sm:px-6 md:pb-8">
+          <main className="flex-1 px-2 sm:px-6">
             <CryptoList 
               cryptoList={cryptoList}
               onToggleFavorite={handleToggleFavorite}
