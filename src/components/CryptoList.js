@@ -84,7 +84,7 @@ function CryptoList({ cryptoList, onToggleFavorite, favorites, darkMode }) {
             </tbody>
         </table>
         {filtered.length === 0 && (
-          <div className="text-gray-400 p-4">Nessuna crypto trovata.</div>
+          <div className="bg-gray-800 text-gray-400 border-t border-gray-600 py-2 px-4 text-sm">No cryptocurrencies found.</div>
         )}
       </div>
     </div>

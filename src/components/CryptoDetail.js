@@ -136,6 +136,8 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
 
   return (
     <div className={`${!darkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-400 bg-gray-200 text-gray-900"} p-4 sm:p-6 mb-6 border mt-4 mx-3 lg:mx-0 sm:mx-3 rounded`}>
+      
+      {Object.keys(crypto).length > 0 ? (
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <h2 className="text-md mb-0 font-bold flex items-center flex-wrap">
           <img
@@ -196,8 +198,13 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
           </span>
         </div>
       </div>
-
-      {/* Charts */}
+      ) : (
+       <h2 className="text-md mb-0 font-bold flex items-center flex-wrap">
+          Cryptocurrency Not Found
+       </h2>
+      )}
+      
+      {Object.keys(crypto).length > 0 ? (
       <div className="mt-2">
         <div className="rounded p-2 mb-2">
           <Line data={chartData} options={chartOptions} height={60} />
@@ -240,6 +247,11 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
           </button>
         </div>
       </div>
+      ) : (
+      <div className="mt-4 text-sm text-gray-500 h-screen flex items-center justify-center">
+        Detailed information about the selected cryptocurrency will appear here.
+      </div>
+      )}
     </div>
   );
 }
@@ -252,7 +264,11 @@ CryptoDetail.propTypes = {
 };
 
 CryptoDetail.defaultProps = {
-  crypto: {},
+  crypto: {
+    name:"Not Found",
+    symbol: "?",
+    image: "",
+  },
   onToggleFavorite: () => {},
   isFavorite: false,
   darkMode: false,
