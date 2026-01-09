@@ -23,19 +23,18 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
       return sortDir === "asc" ? cmp : -cmp;
     });
 
-  if (loading)
-    return <div className="p-6 text-white">Loading...</div>;
-
   return (
-    <div className="p-6 border border-gray-400 mt-6 mx-3 rounded bg-sky-950">
-      <h2 className="text-md font-medium mb-4 text-white">Cryptocurrency <span className="font-bold">Market</span></h2>
+    <div className="border border-gray-600 mt-6 mx-3 rounded bg-gray-950/95">
+      <div className="bg-gray-800 py-3 px-6 ">
+        <h2 className="text-md font-medium text-white">Cryptocurrency <span className="font-bold">Market</span></h2>
+      </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full">
-            <thead>
-                <tr className="text-xs font-light text-gray-400">
+        <table className="min-w-full bg-gray-900">
+            <thead className="bg-gray-900">
+                <tr className="text-xs font-light text-gray-400 border-t border-gray-600">
                     <th
-                    className="py-2 px-4 text-left cursor-pointer select-none"
+                    className="py-3 px-4 pl-5 text-left cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("name");
                         setSortDir(sortBy === "name" && sortDir === "asc" ? "desc" : "asc");
@@ -44,7 +43,7 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
                     Coin {sortBy === "name" ? (sortDir === "asc" ? "↑" : "↓") : ""}
                     </th>
                     <th
-                    className="py-2 px-4 text-right cursor-pointer select-none"
+                    className="py-3 px-4 text-right cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("price");
                         setSortDir(sortBy === "price" && sortDir === "asc" ? "desc" : "asc");
@@ -53,7 +52,7 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
                     Price (EUR) {sortBy === "price" ? (sortDir === "asc" ? "↑" : "↓") : ""}
                     </th>
                     <th
-                    className="py-2 px-4 text-right cursor-pointer select-none"
+                    className="py-3 px-4 text-right cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("change");
                         setSortDir(sortBy === "change" && sortDir === "asc" ? "desc" : "asc");
@@ -62,7 +61,7 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
                     24h Change {sortBy === "change" ? (sortDir === "asc" ? "↑" : "↓") : ""}
                     </th>
                     <th
-                    className="py-2 px-4 text-right cursor-pointer select-none"
+                    className="py-3 px-4 text-right cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("market_cap");
                         setSortDir(sortBy === "market_cap" && sortDir === "asc" ? "desc" : "asc");
@@ -72,12 +71,15 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
                     </th>
                 </tr>
             </thead>
-            <tbody className="text-white">
-            {filtered.map((crypto) => (
+            <tbody className="text-white ">
+            {filtered.map((crypto, idx) => (
                 <CryptoItem 
                     key={crypto.id} 
                     crypto={crypto} 
                     onSelect={() => onSelectCrypto(crypto)}
+                    onToggleFavorite={onToggleFavorite}
+                    isFavorite={favorites.some((c) => c.id === crypto.id)}
+                    index={idx}
                 />
             ))}
             </tbody>
@@ -92,10 +94,12 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
 
 CryptoList.defaultProps = {
   onSelectCrypto: () => {},
+  favorites: [],
 };
 
 CryptoList.propTypes = {
   onSelectCrypto: PropTypes.func,
+  favorites: PropTypes.arrayOf(PropTypes.object),
 };
 
 export default CryptoList;
