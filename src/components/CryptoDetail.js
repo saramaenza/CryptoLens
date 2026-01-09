@@ -131,7 +131,7 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
   };
 
   return (
-    <div className="p-6 mb-6 border border-gray-400 mt-4 mx-3 rounded bg-sky-950 text-white">
+    <div className="p-6 mb-6 border border-gray-600 mt-4 mx-3 rounded bg-gray-800 text-white">
       <div className="flex items-center justify-between">
         <h2 className="text-md mb-0 font-bold flex items-center">
           <img
@@ -204,25 +204,25 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
         </div>
         <div className="flex space-x-2 mt-2 ml-6">
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 1 ? "bg-blue-950" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 1 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
             onClick={() => setDays(1)}
           >
             1D
           </button>
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 7 ? "bg-blue-950" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 7 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
             onClick={() => setDays(7)}
           >
             7D
           </button>
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 30 ? "bg-blue-950" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 30 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
             onClick={() => setDays(30)}
           >
             1M
           </button>
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 365 ? "bg-blue-950" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 365 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
             onClick={() => setDays(365)}
           >
             1Y
