@@ -2,8 +2,7 @@ import { useState } from "react";
 import CryptoItem from "./CryptoItem";
 import PropTypes from "prop-types";
 
-
-function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites }) {
+function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, darkMode }) {
   const [sortBy, setSortBy] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
 
@@ -24,15 +23,15 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
     });
 
   return (
-    <div className="border border-gray-600 mt-6 mx-3 rounded bg-gray-950/95">
-      <div className="bg-gray-800 py-3 px-6 ">
-        <h2 className="text-md font-medium text-white">Cryptocurrency <span className="font-bold">Market</span></h2>
+    <div className={`${darkMode ? "border border-gray-400 mt-6 mx-3 rounded bg-gray-100" : "border border-gray-600 mt-6 mx-3 rounded bg-gray-950/95"}`}>
+      <div className={`${darkMode ? "bg-gray-200" : "bg-gray-800"} py-3 px-6 `}>
+        <h2 className={`${darkMode ? "text-gray-900" : "text-white"} text-md font-medium`}>Cryptocurrency <span className="font-bold">Market</span></h2>
       </div>
 
       <div className="overflow-x-auto">
-        <table className="min-w-full bg-gray-900">
-            <thead className="bg-gray-900">
-                <tr className="text-xs font-light text-gray-400 border-t border-gray-600">
+        <table className={`${darkMode ? "min-w-full bg-gray-200" : "min-w-full bg-gray-900"}`}>
+            <thead className={`${darkMode ? "bg-gray-200" : "bg-gray-900"}`}>
+                <tr className={`${darkMode ? "text-xs font-light text-gray-600 border-t border-gray-400" : "text-xs font-light text-gray-400 border-t border-gray-600"}`}>
                     <th
                     className="py-3 px-4 pl-5 text-left cursor-pointer select-none"
                     onClick={() => {
@@ -80,6 +79,7 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites })
                     onToggleFavorite={onToggleFavorite}
                     isFavorite={favorites.some((c) => c.id === crypto.id)}
                     index={idx}
+                    darkMode={darkMode}
                 />
             ))}
             </tbody>
