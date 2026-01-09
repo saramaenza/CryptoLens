@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index, darkMode }) {
+function CryptoItem({ crypto, onToggleFavorite, isFavorite, index, darkMode }) {
   const bgColor = index % 2 === 0 ? (darkMode ? "bg-gray-200" : "bg-gray-800") : (darkMode ? "bg-gray-100" : "bg-gray-900");
   return (
     <tr className={`border-t ${bgColor} ${darkMode ? "border-gray-400 text-gray-900" : "border-gray-600 text-white"} cursor-pointer`}>
@@ -61,25 +61,15 @@ function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index, dar
 }
 
 CryptoItem.propTypes = {
-  crypto: PropTypes.shape({
-    image: PropTypes.string.isRequired,
-    name: PropTypes.string.isRequired,
-    current_price: PropTypes.number,
-    price_change_percentage_24h: PropTypes.number,
-    market_cap: PropTypes.number,
-  }).isRequired,
-    onSelect: PropTypes.func,
+  crypto: PropTypes.object.isRequired,
+  onToggleFavorite: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  index: PropTypes.number.isRequired,
+  darkMode: PropTypes.bool.isRequired,
 };
 
 CryptoItem.defaultProps = {
-  crypto: {
-    image: "/default.svg",
-    name: "Unknown",
-    current_price: 0,
-    price_change_percentage_24h: 0,
-    market_cap: 0,
-  },
-  onSelect: () => {},
+  darkMode: false,
 };
 
 export default CryptoItem;

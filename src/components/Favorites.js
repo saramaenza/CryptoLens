@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function Favorites({ favorites, onSelectCrypto, darkMode }) {
   const [activeId, setActiveId] = useState(null);
@@ -40,5 +41,17 @@ function Favorites({ favorites, onSelectCrypto, darkMode }) {
     </div>
   );
 }
+
+Favorites.propTypes = {
+  favorites: PropTypes.array.isRequired,
+  onSelectCrypto: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+};
+
+Favorites.defaultProps = {
+  favorites: [],
+  onSelectCrypto: () => {},
+  darkMode: false,
+};
 
 export default Favorites;

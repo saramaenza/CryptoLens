@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 function DarkModeToggle({ darkMode, setDarkMode }) {
 
   return (
@@ -22,5 +24,15 @@ function DarkModeToggle({ darkMode, setDarkMode }) {
     </button>
   );
 }
+
+DarkModeToggle.propTypes = {
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired,
+};
+
+DarkModeToggle.defaultProps = {
+  darkMode: false,
+  setDarkMode: () => {},
+};
 
 export default DarkModeToggle;

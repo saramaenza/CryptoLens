@@ -1,4 +1,5 @@
 import Favorites from './Favorites';
+import PropTypes from "prop-types";
 
 function Sidebar({ favorites, onSelectCrypto, darkMode }) {
   return (
@@ -9,5 +10,17 @@ function Sidebar({ favorites, onSelectCrypto, darkMode }) {
     </aside>
   );
 }
+
+Sidebar.propTypes = {
+  favorites: PropTypes.array.isRequired,
+  onSelectCrypto: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+};
+
+Sidebar.defaultProps = {
+  favorites: [],
+  onSelectCrypto: () => {},
+  darkMode: false,
+};
 
 export default Sidebar;

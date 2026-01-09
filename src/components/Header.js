@@ -1,5 +1,6 @@
 import SearchInput from "./SearchInput";
 import DarkModeToggle from "./DarkModeToggle";
+import PropTypes from "prop-types";
 
 function Header({ allCryptos, onSelectCrypto, darkMode, setDarkMode }) {
   return (
@@ -18,5 +19,19 @@ function Header({ allCryptos, onSelectCrypto, darkMode, setDarkMode }) {
     </header>
   );
 }
+
+Header.propTypes = {
+  allCryptos: PropTypes.array.isRequired,
+  onSelectCrypto: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+  setDarkMode: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  allCryptos: [],
+  onSelectCrypto: () => {},
+  darkMode: false,
+  setDarkMode: () => {},
+};
 
 export default Header;

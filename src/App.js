@@ -58,7 +58,6 @@ function App() {
           />
           <main className="flex-1 px-2 pb-4 sm:px-6 md:pb-8">
             <CryptoList 
-              onSelectCrypto={setSelectedCrypto} 
               cryptoList={cryptoList}
               onToggleFavorite={handleToggleFavorite}
               favorites={favorites}

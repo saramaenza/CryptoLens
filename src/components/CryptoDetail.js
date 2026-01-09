@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import { Bar } from "react-chartjs-2";
+import PropTypes from "prop-types";
 import {
   Chart as ChartJS,
   LineElement,
@@ -242,5 +243,19 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
     </div>
   );
 }
+
+CryptoDetail.propTypes = {
+  crypto: PropTypes.object.isRequired,
+  onToggleFavorite: PropTypes.func.isRequired,
+  isFavorite: PropTypes.bool.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+};
+
+CryptoDetail.defaultProps = {
+  crypto: {},
+  onToggleFavorite: () => {},
+  isFavorite: false,
+  darkMode: false,
+};
 
 export default CryptoDetail;

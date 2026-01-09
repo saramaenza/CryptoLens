@@ -2,7 +2,7 @@ import { useState } from "react";
 import CryptoItem from "./CryptoItem";
 import PropTypes from "prop-types";
 
-function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, darkMode }) {
+function CryptoList({ cryptoList, onToggleFavorite, favorites, darkMode }) {
   const [sortBy, setSortBy] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
 
@@ -75,7 +75,6 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, d
                 <CryptoItem 
                     key={crypto.id} 
                     crypto={crypto} 
-                    onSelect={() => onSelectCrypto(crypto)}
                     onToggleFavorite={onToggleFavorite}
                     isFavorite={favorites.some((c) => c.id === crypto.id)}
                     index={idx}
@@ -92,14 +91,18 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, d
   );
 }
 
-CryptoList.defaultProps = {
-  onSelectCrypto: () => {},
-  favorites: [],
+CryptoList.propTypes = {
+  cryptoList: PropTypes.array.isRequired,
+  onToggleFavorite: PropTypes.func.isRequired,
+  favorites: PropTypes.array.isRequired,
+  darkMode: PropTypes.bool.isRequired,
 };
 
-CryptoList.propTypes = {
-  onSelectCrypto: PropTypes.func,
-  favorites: PropTypes.arrayOf(PropTypes.object),
+CryptoList.defaultProps = {
+  cryptoList: [],
+  favorites: [],
+  onToggleFavorite: () => {},
+  darkMode: false,
 };
 
 export default CryptoList;

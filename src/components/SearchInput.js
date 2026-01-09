@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PropTypes from "prop-types";
 
 function SearchInput({ allCryptos, onSelectCrypto, darkMode }) {
   const [query, setQuery] = useState("");
@@ -50,5 +51,17 @@ function SearchInput({ allCryptos, onSelectCrypto, darkMode }) {
     </div>
   );
 }
+
+SearchInput.propTypes = {
+  allCryptos: PropTypes.array.isRequired,
+  onSelectCrypto: PropTypes.func.isRequired,
+  darkMode: PropTypes.bool.isRequired,
+};
+
+SearchInput.defaultProps = {
+  allCryptos: [],
+  onSelectCrypto: () => {},
+  darkMode: false,
+};
 
 export default SearchInput;
