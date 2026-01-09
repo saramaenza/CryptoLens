@@ -1,9 +1,9 @@
 import PropTypes from "prop-types";
 
-function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index }) {
-  const bgColor = index % 2 === 0 ? "bg-gray-800" : "bg-gray-900";
+function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index, darkMode }) {
+  const bgColor = index % 2 === 0 ? (darkMode ? "bg-gray-200" : "bg-gray-800") : (darkMode ? "bg-gray-100" : "bg-gray-900");
   return (
-    <tr className={`border-t ${bgColor} border-gray-600 cursor-pointer`} onClick={onSelect}>
+    <tr className={`border-t ${bgColor} ${darkMode ? "border-gray-400 text-gray-900" : "border-gray-600 text-white"} cursor-pointer`} onClick={onSelect}>
       <td className="py-2 px-4 font-medium pl-5">
         <img
           src={crypto.image}
@@ -20,8 +20,8 @@ function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index }) {
       <td
         className={`py-2 px-4 text-right tracking-wider ${
           crypto.price_change_percentage_24h > 0
-            ? "text-green-400"
-            : "text-red-400"
+            ? (darkMode ? "text-green-600" : "text-green-400")
+            : (darkMode ? "text-red-600" : "text-red-400")
         }`}
       >
         {crypto.price_change_percentage_24h !== undefined && crypto.price_change_percentage_24h !== null
@@ -43,10 +43,13 @@ function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index }) {
           onClick={(e) => {
             e.stopPropagation();
             onToggleFavorite(crypto);
-           
           }}
           className={`material-symbols-outlined text-xl cursor-pointer ${
-            isFavorite ? "text-amber-400" : "text-gray-400"
+            isFavorite
+              ? "text-amber-400"
+              : darkMode
+                ? "text-gray-400"
+                : "text-gray-400"
           }`}
           aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
         >
