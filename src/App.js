@@ -11,6 +11,7 @@ function App() {
   const [cryptoList, setCryptoList] = useState([]); // top 5 cryptos displayed
   const [favorites, setFavorites] = useState([]);
   const [allCryptos, setAllCryptos] = useState([]); // all 50 cryptos
+  const [darkMode, setDarkMode] = useState(false);
 
   // Fetch 50 crypto on mount 
   // Fetching data from CoinGecko API
@@ -46,11 +47,14 @@ function App() {
       <Header 
         allCryptos={allCryptos}
         onSelectCrypto={setSelectedCrypto}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
       />
-      <div className="flex flex-1 bg-gray-950/95">
+      <div className={`flex flex-1 ${darkMode ? "bg-gray-100" : "bg-gray-950/95"}`}>
         <Sidebar 
           favorites={favorites}
           onSelectCrypto={setSelectedCrypto}
+          darkMode={darkMode}
         />
         <main className="flex-1">
           <CryptoList 
@@ -58,16 +62,18 @@ function App() {
             cryptoList={cryptoList}
             onToggleFavorite={handleToggleFavorite}
             favorites={favorites}
+            darkMode={darkMode}
           />
           <CryptoDetail
             crypto={selectedCrypto || cryptoList[0] || {}}
             onToggleFavorite={handleToggleFavorite}
             isFavorite={favorites.some((c) => c.id === (selectedCrypto || cryptoList[0] || {}).id)}
+            darkMode={darkMode}
           />
         </main>
       </div>
     </div>
-    <Footer />
+    <Footer darkMode={darkMode}/>
     </>
   );
 }
