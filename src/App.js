@@ -43,37 +43,37 @@ function App() {
 
   return (
     <>
-    <div className="flex flex-col">
-      <Header 
-        allCryptos={allCryptos}
-        onSelectCrypto={setSelectedCrypto}
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-      />
-      <div className={`flex flex-1 ${darkMode ? "bg-gray-100" : "bg-gray-950/95"}`}>
-        <Sidebar 
-          favorites={favorites}
+      <div className="flex flex-col min-h-screen">
+        <Header 
+          allCryptos={allCryptos}
           onSelectCrypto={setSelectedCrypto}
           darkMode={darkMode}
+          setDarkMode={setDarkMode}
         />
-        <main className="flex-1">
-          <CryptoList 
-            onSelectCrypto={setSelectedCrypto} 
-            cryptoList={cryptoList}
-            onToggleFavorite={handleToggleFavorite}
+        <div className={`flex flex-col md:flex-row flex-1 ${darkMode ? "bg-gray-100" : "bg-gray-950/95"}`}>
+          <Sidebar 
             favorites={favorites}
+            onSelectCrypto={setSelectedCrypto}
             darkMode={darkMode}
           />
-          <CryptoDetail
-            crypto={selectedCrypto || cryptoList[0] || {}}
-            onToggleFavorite={handleToggleFavorite}
-            isFavorite={favorites.some((c) => c.id === (selectedCrypto || cryptoList[0] || {}).id)}
-            darkMode={darkMode}
-          />
-        </main>
+          <main className="flex-1 px-2 pb-4 sm:px-6 md:pb-8">
+            <CryptoList 
+              onSelectCrypto={setSelectedCrypto} 
+              cryptoList={cryptoList}
+              onToggleFavorite={handleToggleFavorite}
+              favorites={favorites}
+              darkMode={darkMode}
+            />
+            <CryptoDetail
+              crypto={selectedCrypto || cryptoList[0] || {}}
+              onToggleFavorite={handleToggleFavorite}
+              isFavorite={favorites.some((c) => c.id === (selectedCrypto || cryptoList[0] || {}).id)}
+              darkMode={darkMode}
+            />
+          </main>
+        </div>
       </div>
-    </div>
-    <Footer darkMode={darkMode}/>
+      <Footer darkMode={darkMode}/>
     </>
   );
 }

@@ -10,8 +10,8 @@ function SearchInput({ allCryptos, onSelectCrypto, darkMode }) {
       )
     : [];
 
-  return (
-    <div className="relative w-1/2 ml-20">
+   return (
+    <div className="relative w-full sm:w-80 md:w-96 lg:w-md mx-0 sm:mx-4 sm:ml-10">
       <input
         type="text"
         placeholder="Search..."

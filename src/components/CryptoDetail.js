@@ -134,9 +134,9 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
   };
 
   return (
-    <div className={`${!darkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-400 bg-gray-200 text-gray-900"} p-6 mb-6 border mt-4 mx-3 rounded`}>
-      <div className="flex items-center justify-between">
-        <h2 className="text-md mb-0 font-bold flex items-center">
+    <div className={`${!darkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-400 bg-gray-200 text-gray-900"} p-4 sm:p-6 mb-6 border mt-4 mx-1 sm:mx-3 rounded`}>
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <h2 className="text-md mb-0 font-bold flex items-center flex-wrap">
           <img
             src={crypto.image}
             alt={crypto.name}
@@ -150,7 +150,6 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
             onClick={(e) => {
               e.stopPropagation();
               onToggleFavorite(crypto);
-            
             }}
             className={`material-symbols-outlined text-xl pl-3 cursor-pointer ${
               isFavorite ? "text-amber-400" : "text-gray-400"
@@ -160,7 +159,7 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
             star
           </button>
         </h2>
-        <div className="flex space-x-6 items-center">
+        <div className="flex flex-wrap gap-4 sm:space-x-6 items-center">
           <span className={`${darkMode ? "text-green-600" : "text-green-400"} font-medium tracking-wider`}>
             {crypto.current_price !== undefined && crypto.current_price !== null
               ? `€${crypto.current_price.toLocaleString(undefined, { maximumFractionDigits: 2 })}`

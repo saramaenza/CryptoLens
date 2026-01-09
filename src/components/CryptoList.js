@@ -23,17 +23,17 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, d
     });
 
   return (
-    <div className={`${darkMode ? "border border-gray-400 mt-6 mx-3 rounded bg-gray-100" : "border border-gray-600 mt-6 mx-3 rounded bg-gray-950/95"}`}>
-      <div className={`${darkMode ? "bg-gray-200" : "bg-gray-800"} py-3 px-6 `}>
+    <div className={`${darkMode ? "border-gray-400 bg-gray-100" : "border-gray-600 bg-gray-950/95"} border lg:mt-6 mx-3 sm:mx-3 rounded`}>
+      <div className={`${darkMode ? "bg-gray-200" : "bg-gray-800"} py-3 px-3 sm:px-6`}>
         <h2 className={`${darkMode ? "text-gray-900" : "text-white"} text-md font-medium`}>Cryptocurrency <span className="font-bold">Market</span></h2>
       </div>
 
       <div className="overflow-x-auto">
-        <table className={`${darkMode ? "min-w-full bg-gray-200" : "min-w-full bg-gray-900"}`}>
+        <table className={`${darkMode ? "min-w-full bg-gray-200" : "min-w-full bg-gray-900"} text-xs sm:text-sm`}>
             <thead className={`${darkMode ? "bg-gray-200" : "bg-gray-900"}`}>
                 <tr className={`${darkMode ? "text-xs font-light text-gray-600 border-t border-gray-400" : "text-xs font-light text-gray-400 border-t border-gray-600"}`}>
                     <th
-                    className="py-3 px-4 pl-5 text-left cursor-pointer select-none"
+                    className="py-2 sm:py-3 px-2 sm:px-4 pl-3 sm:pl-5 text-left cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("name");
                         setSortDir(sortBy === "name" && sortDir === "asc" ? "desc" : "asc");
@@ -42,7 +42,7 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, d
                     Coin {sortBy === "name" ? (sortDir === "asc" ? "↑" : "↓") : ""}
                     </th>
                     <th
-                    className="py-3 px-4 text-right cursor-pointer select-none"
+                    className="py-2 sm:py-3 px-2 sm:px-4 text-right cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("price");
                         setSortDir(sortBy === "price" && sortDir === "asc" ? "desc" : "asc");
@@ -51,7 +51,7 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, d
                     Price (EUR) {sortBy === "price" ? (sortDir === "asc" ? "↑" : "↓") : ""}
                     </th>
                     <th
-                    className="py-3 px-4 text-right cursor-pointer select-none"
+                    className="py-2 sm:py-3 px-2 sm:px-4 text-right cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("change");
                         setSortDir(sortBy === "change" && sortDir === "asc" ? "desc" : "asc");
@@ -60,7 +60,7 @@ function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites, d
                     24h Change {sortBy === "change" ? (sortDir === "asc" ? "↑" : "↓") : ""}
                     </th>
                     <th
-                    className="py-3 px-4 text-right cursor-pointer select-none"
+                    className="py-2 sm:py-3 px-2 sm:px-4 text-right cursor-pointer select-none"
                     onClick={() => {
                         setSortBy("market_cap");
                         setSortDir(sortBy === "market_cap" && sortDir === "asc" ? "desc" : "asc");

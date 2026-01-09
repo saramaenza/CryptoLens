@@ -3,22 +3,22 @@ import PropTypes from "prop-types";
 function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index, darkMode }) {
   const bgColor = index % 2 === 0 ? (darkMode ? "bg-gray-200" : "bg-gray-800") : (darkMode ? "bg-gray-100" : "bg-gray-900");
   return (
-    <tr className={`border-t ${bgColor} ${darkMode ? "border-gray-400 text-gray-900" : "border-gray-600 text-white"} cursor-pointer`} onClick={onSelect}>
-      <td className="py-2 px-4 font-medium pl-5">
+    <tr className={`border-t ${bgColor} ${darkMode ? "border-gray-400 text-gray-900" : "border-gray-600 text-white"} cursor-pointer`}>
+      <td className="py-2 px-2 sm:px-4 font-medium pl-2 sm:pl-5">
         <img
           src={crypto.image}
           alt={crypto.name}
-          className="inline-block w-6 h-6 mr-2"
+          className="inline-block w-6 h-6 mr-2 align-middle"
         />
-        {crypto.name}
+        <span className="align-middle truncate max-w-28 sm:max-w-none">{crypto.name}</span>
       </td>
-      <td className="py-2 px-4 text-right font-medium tracking-wider">
+      <td className="py-2 px-2 sm:px-4 text-right font-medium tracking-wider">
         {crypto.current_price !== undefined && crypto.current_price !== null
           ? `€${crypto.current_price.toLocaleString(undefined, { maximumFractionDigits: 2 })}`
           : "-"}
       </td>
       <td
-        className={`py-2 px-4 text-right tracking-wider ${
+        className={`py-2 px-2 sm:px-4 text-right tracking-wider ${
           crypto.price_change_percentage_24h > 0
             ? (darkMode ? "text-green-600" : "text-green-400")
             : (darkMode ? "text-red-600" : "text-red-400")
@@ -33,18 +33,18 @@ function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index, dar
             )
           : "-"}
       </td>
-      <td className="py-2 px-4 text-right font-medium tracking-wider">
+      <td className="py-2 px-2 sm:px-4 text-right font-medium tracking-wider">
         {crypto.market_cap !== undefined && crypto.market_cap !== null
           ? `€${crypto.market_cap.toLocaleString(undefined, { maximumFractionDigits: 0 })}`
           : "-"}
       </td>
-      <td className="py-2 px-4 text-center">
+      <td className="py-2 px-2 sm:px-4 text-center">
         <button
           onClick={(e) => {
             e.stopPropagation();
             onToggleFavorite(crypto);
           }}
-          className={`material-symbols-outlined text-xl cursor-pointer ${
+          className={`material-symbols-outlined text-lg sm:text-xl cursor-pointer ${
             isFavorite
               ? "text-amber-400"
               : darkMode
