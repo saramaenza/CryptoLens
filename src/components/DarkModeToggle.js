@@ -14,19 +14,19 @@ function DarkModeToggle() {
   return (
     <button
       onClick={() => setLightMode(!lightMode)}
-      className={`w-16 h-8 flex items-center rounded p-1.5 transition-colors duration-300 focus:outline-none ${
+      className={`w-16 h-8 flex cursor-pointer items-center rounded p-2 transition-colors border border-gray-600 duration-300 focus:outline-none ${
         lightMode
           ? "bg-amber-400"
-          : "bg-gray-400"
+          : "bg-gray-800"
       }`}
       aria-label="Toggle dark mode"
     >
       <span
-        className={`w-5 h-5 flex items-center justify-center transform transition-transform duration-300 ${
+        className={`w-4 h-4 flex items-center justify-center transform transition-transform duration-300 ${
           lightMode ? "translate-x-7" : "translate-x-0"
         }`}
       >
-        <span className="material-symbols-rounded text-gray-700 text-base">
+        <span className="material-symbols-rounded text-gray-400">
           {lightMode ? "sunny" : "bedtime"}
         </span>
       </span>
