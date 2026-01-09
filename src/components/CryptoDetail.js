@@ -14,7 +14,7 @@ import {
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend, BarElement);
 
-function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
+function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
   const [days, setDays] = useState(1);
   const [history, setHistory] = useState([]);
   const [volumeHistory, setVolumeHistory] = useState([]);
@@ -50,6 +50,9 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
     ],
   };
 
+  const tickColor = darkMode ? "#374151" : "#6b7280"; 
+  const gridColor = darkMode ? "rgba(55,65,81,0.1)" : "rgba(156,163,175,0.4)";
+
   const chartOptions = {
     responsive: true,
     plugins: {
@@ -59,23 +62,23 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
     scales: {
       x: { 
         ticks: { 
-            color: "#d1d5db",
-            maxTicksLimit: 6,
-            autoSkip: true 
+          color: tickColor,
+          maxTicksLimit: 6,
+          autoSkip: true 
         },
         grid: {
-            color: "rgba(156,163,175,0.4)",
+          color: gridColor,
         }, 
       },
       y: { 
         position: "right",
         ticks: { 
-            color: "#d1d5db",
-            maxTicksLimit: 4,
-            autoSkip: true 
+          color: tickColor,
+          maxTicksLimit: 4,
+          autoSkip: true 
         },
         grid: {
-            color: "rgba(156,163,175,0.4)",
+          color: gridColor,
         },
       },
     },
@@ -108,30 +111,30 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
     scales: {
       x: { 
         ticks: { 
-            color: "#d1d5db",
-            maxTicksLimit: 6,
-            autoSkip: true 
+          color: tickColor,
+          maxTicksLimit: 6,
+          autoSkip: true 
         },
         grid: {
-            color: "rgba(156,163,175,0.4)",
+          color: gridColor,
         },  
       },
       y: { 
         position: "right",
         ticks: { 
-            color: "#d1d5db",
-            maxTicksLimit: 4,
-            autoSkip: true 
+          color: tickColor,
+          maxTicksLimit: 4,
+          autoSkip: true 
         },
         grid: {
-            color: "rgba(156,163,175,0.4)",
+          color: gridColor,
         },  
       },
     },
   };
 
   return (
-    <div className="p-6 mb-6 border border-gray-600 mt-4 mx-3 rounded bg-gray-800 text-white">
+    <div className={`${!darkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-400 bg-gray-200 text-gray-900"} p-6 mb-6 border mt-4 mx-3 rounded`}>
       <div className="flex items-center justify-between">
         <h2 className="text-md mb-0 font-bold flex items-center">
           <img
@@ -158,7 +161,7 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
           </button>
         </h2>
         <div className="flex space-x-6 items-center">
-          <span className="font-medium tracking-wider text-green-400">
+          <span className={`${darkMode ? "text-green-600" : "text-green-400"} font-medium tracking-wider`}>
             {crypto.current_price !== undefined && crypto.current_price !== null
               ? `€${crypto.current_price.toLocaleString(undefined, { maximumFractionDigits: 2 })}`
               : "-"}
@@ -166,8 +169,8 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
           <span
             className={`tracking-wider ${
               crypto.price_change_percentage_24h > 0
-                ? "text-green-400"
-                : "text-red-400"
+                ? (darkMode ? "text-green-600" : "text-green-400")
+                : (darkMode ? "text-red-600" : "text-red-400")
             }`}
           >
             {crypto.price_change_percentage_24h !== undefined && crypto.price_change_percentage_24h !== null
@@ -204,25 +207,33 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
         </div>
         <div className="flex space-x-2 mt-2 ml-6">
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 1 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border text-sm font-medium px-5 rounded transition-colors
+              ${!darkMode ? "border-gray-400 hover:bg-gray-600" : "border-gray-400 hover:bg-gray-300"}
+              ${days === 1 ? (!darkMode ? "bg-gray-600 text-white" : "bg-gray-300 text-gray-900") : (!darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900")}`}
             onClick={() => setDays(1)}
           >
             1D
           </button>
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 7 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border text-sm font-medium px-5 rounded transition-colors
+              ${!darkMode ? "border-gray-400 hover:bg-gray-600" : "border-gray-400 hover:bg-gray-300"}
+              ${days === 7 ? (!darkMode ? "bg-gray-600 text-white" : "bg-gray-300 text-gray-900") : (!darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900")}`}
             onClick={() => setDays(7)}
           >
             7D
           </button>
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 30 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border text-sm font-medium px-5 rounded transition-colors
+              ${!darkMode ? "border-gray-400 hover:bg-gray-600" : "border-gray-400 hover:bg-gray-300"}
+              ${days === 30 ? (!darkMode ? "bg-gray-600 text-white" : "bg-gray-300 text-gray-900") : (!darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900")}`}
             onClick={() => setDays(30)}
           >
             1M
           </button>
           <button
-            className={`cursor-pointer border border-gray-400 text-sm py-1 font-medium px-5 rounded ${days === 365 ? "bg-gray-600" : "bg-gray-800 text-white"}`}
+            className={`cursor-pointer border text-sm font-medium px-5 rounded transition-colors
+              ${!darkMode ? "border-gray-400 hover:bg-gray-600" : "border-gray-400 hover:bg-gray-300"}
+              ${days === 365 ? (!darkMode ? "bg-gray-600 text-white" : "bg-gray-300 text-gray-900") : (!darkMode ? "bg-gray-800 text-white" : "bg-gray-100 text-gray-900")}`}
             onClick={() => setDays(365)}
           >
             1Y
