@@ -1,75 +1,138 @@
-<<<<<<< HEAD
-# Getting Started with Create React App
+# 💰 CryptoLens
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+CryptoLens is a React-based web application that allows users to explore and monitor cryptocurrencies, providing real-time market data, historical price charts, and a personalized favorites system through a clean and modern interface.
 
-## Available Scripts
+The project focuses on data visualization, state management, and user experience, integrating the CoinGecko API to retrieve up-to-date cryptocurrency data and detailed market metrics in a reliable and consistent way.
 
-In the project directory, you can run:
+🔗 Live Demo: https://cryptolens-react.vercel.app/
 
-### `npm start`
+## Features
+Cryptocurrency Market Overview
+- Real-time price updates
+- Market capitalization and trading volume
+- 24h percentage price change
+- Data sourced from the CoinGecko API
+- Clear and readable layout for fast comparison
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Detailed Cryptocurrency Information
+- Coin name and symbol
+- Current price and market rank
+- Market cap and total volume
+- Price change percentages
+- All data retrieved dynamically from CoinGecko
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Historical Price Charts
+- Interactive charts showing price trends over time
+- Multiple time ranges (when available)
+- Visual focus on market movement rather than raw numbers
+- Helps users understand short-term and long-term trends
 
-### `npm test`
+Favorites System
+- Add and remove cryptocurrencies from favorites
+- Quick access to tracked assets
+- Personalized experience without authentication
+- Favorites persistence (localStorage)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Responsive & Modern UI
+- Fully responsive layout
+- Optimized for desktop and mobile devices
+- Minimalist design to keep the focus on data
+- Smooth and intuitive user interactions
 
-### `npm run build`
+## Design Choices
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+CryptoLens is designed to prioritize clarity and usability when dealing with financial and market data.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Key decisions include:
+- A dashboard-oriented layout for quick scanning of multiple assets
+- Direct integration with a single, reliable data source (CoinGecko) to ensure consistency
+- A charts-first approach to make trends immediately understandable
+- Reduced visual noise to avoid cognitive overload
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Technologies Used
+Frontend:
+- React
+- Tailwind CSS
 
-### `npm run eject`
+Data & APIs
+- JavaScript (ES6+)
+-  CoinGecko API
+- REST APIs (Fetch)
+- Chart library for data visualization (Chart.js)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## UI State Management
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application explicitly manages:
+- Loading states during CoinGecko API requests
+- Empty states when no cryptocurrencies or favorites are available
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Application Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Main components include:
+- CryptoList: renders a list of top cryptocurrencies, allowing users to view and favorite them.
+- CryptoItem: represents a single cryptocurrency item in a list, showing its name, symbol, price, and favorite toggle.
+- CryptoDetail: displays detailed information and statistics about a selected cryptocurrency, including price, market cap, and charts.
+- DarkModeToggle: provides a button to toggle between light and dark mode themes.
+- Favorites: shows a list of the user's favorite cryptocurrencies for quick access.
+- Footer: application footer with credits and author information.
+- Header: contains the main navigation, search bar, and dark mode toggle for the app.
+- SearchInput: input field for searching cryptocurrencies by name or symbol.
+- Sidebar: displays user's favorite cryptocurrencies for easy selection.
 
-## Learn More
+## Installation & Local Development
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+To run the project locally:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Clone the repository
 
-### Code Splitting
+git clone https://github.com/saramaenza/CryptoLens.git
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Install dependencies
 
-### Analyzing the Bundle Size
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Start the development server
 
-### Making a Progressive Web App
+npm start
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The application will be available at
+👉 http://localhost:3000
 
-### Advanced Configuration
+####⚠️ API Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+CryptoLens uses the CoinGecko API, which does not require an API key for basic usage.
 
-### Deployment
+However, keep in mind:
+- Rate limits apply
+- Excessive requests may result in temporary blocking
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Deployment
+The portfolio is deployed using Vercel with automatic builds and deployments on every push to the main branch.
 
-### `npm run build` fails to minify
+## Contributing
+Contributions, suggestions, and improvements are welcome!
+1- Fork the repository
+2- Create a new branch (feature/your-feature-name)
+3- Commit your changes
+4- Open a Pull Request
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
-=======
-# CryptoLens
-CryptoLens is a modern, interactive cryptocurrency dashboard built with React and Tailwind CSS. It provides real-time market data, historical price charts, and customizable favorites, allowing users to track and analyze top cryptocurrencies with an intuitive and responsive interface.
->>>>>>> 9b6a8ae8810453cc2f1467c7c44437605915d0ae
+## Why this project matters
+
+CryptoLens showcases:
+- Integration with a real-world financial API (CoinGecko)
+- Handling of large and frequently updated datasets
+- Effective data visualization for market analysis
+- Clean React architecture and UX-focused design
+
+It demonstrates the ability to transform complex cryptocurrency data into a clear, accessible dashboard, a key skill for modern frontend applications.
+
+## Contact
+
+If you’d like to get in touch with me:
+
+💼 LinkedIn: www.linkedin.com/in/sara-maenza
+
+📧 Email: sara.maenza98@gmail.com
+
+Thank you for visiting my CryptoLens repository!
+I’m always open to feedback, collaboration, and new opportunities 😊
