@@ -135,7 +135,7 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
   };
 
   return (
-    <div className={`${!darkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-400 bg-gray-200 text-gray-900"} p-4 sm:p-6 mb-6 border mt-4 mx-3 lg:mx-0 sm:mx-3 rounded`}>
+    <div className={`${!darkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-400 bg-gray-200 text-gray-900"} p-4 sm:p-6 mb-6 border mt-4 mx-3 lg:mx-0 sm:mx-0 rounded`}>
       
       {Object.keys(crypto).length > 0 ? (
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">

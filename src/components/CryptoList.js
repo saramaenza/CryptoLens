@@ -23,7 +23,7 @@ function CryptoList({ cryptoList, onToggleFavorite, favorites, darkMode }) {
     });
 
   return (
-    <div className={`${darkMode ? "border-gray-400 bg-gray-100" : "border-gray-600 bg-gray-950/95"} border mt-4 lg:mt-6 mx-3 lg:mx-0 sm:mx-3 lg:rounded`}>
+    <div className={`${darkMode ? "border-gray-400 bg-gray-100" : "border-gray-600 bg-gray-950/95"} border mt-4 lg:mt-6 mx-3 lg:mx-0 sm:mx-0 rounded`}>
       <div className={`${darkMode ? "bg-gray-200" : "bg-gray-800"} py-3 px-3 sm:px-6`}>
         <h2 className={`${darkMode ? "text-gray-900" : "text-white"} text-md font-medium`}>Cryptocurrency <span className="font-bold">Market</span></h2>
       </div>
