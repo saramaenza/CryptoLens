@@ -6,12 +6,12 @@ function Favorites({ favorites, onSelectCrypto, darkMode }) {
 
   return (
     <div className="w-full">
-      <h4 className="text-md font-medium flex items-center gap-1">
+      <h4 className="text-md 2xl:text-lg font-medium flex items-center gap-1">
         <span className={`material-symbols-outlined ${darkMode ? "text-amber-500" : "text-amber-400"}`}>star</span>
         Favorites
       </h4>
       <hr className={`${darkMode ? "border-gray-400" : "border-gray-600"} mt-3`} />
-      <ul className="space-y-2 sm:space-y-3 pt-4 sm:pt-5 text-md">
+      <ul className="space-y-2 sm:space-y-3 pt-4 sm:pt-5 text-md 2xl:text-lg">
         {favorites.length === 0 && (
           <li className={`${darkMode ? "text-gray-600" : "text-gray-400"} text-sm sm:text-base`}>No favorites added</li>
         )}

@@ -10,15 +10,15 @@ function CryptoItem({ crypto, onToggleFavorite, isFavorite, index, darkMode }) {
           alt={crypto.name}
           className="inline-block w-6 h-6 mr-2 align-middle"
         />
-        <span className="align-middle truncate max-w-28 sm:max-w-none">{crypto.name}</span>
+        <span className="align-middle truncate max-w-28 sm:max-w-none text-md 2xl:text-lg">{crypto.name}</span>
       </td>
-      <td className="py-2 px-2 sm:px-4 text-right font-medium tracking-wider">
+      <td className="py-2 px-2 sm:px-4 text-right font-medium tracking-wider text-md 2xl:text-lg">
         {crypto.current_price !== undefined && crypto.current_price !== null
           ? `€${crypto.current_price.toLocaleString(undefined, { maximumFractionDigits: 2 })}`
           : "-"}
       </td>
       <td
-        className={`py-2 px-2 sm:px-4 text-right tracking-wider ${
+        className={`py-2 px-2 sm:px-4 text-right tracking-wider text-md 2xl:text-lg ${
           crypto.price_change_percentage_24h > 0
             ? (darkMode ? "text-green-600" : "text-green-400")
             : (darkMode ? "text-red-600" : "text-red-400")
@@ -33,7 +33,7 @@ function CryptoItem({ crypto, onToggleFavorite, isFavorite, index, darkMode }) {
             )
           : "-"}
       </td>
-      <td className="py-2 px-2 sm:px-4 text-right font-medium tracking-wider">
+      <td className="py-2 px-2 sm:px-4 text-right font-medium tracking-wider text-md 2xl:text-lg">
         {crypto.market_cap !== undefined && crypto.market_cap !== null
           ? `€${crypto.market_cap.toLocaleString(undefined, { maximumFractionDigits: 0 })}`
           : "-"}

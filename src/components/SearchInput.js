@@ -16,7 +16,7 @@ function SearchInput({ allCryptos, onSelectCrypto, darkMode }) {
       <input
         type="text"
         placeholder="Search..."
-        className={`w-full p-2 pl-13 rounded text-sm font-normal focus-visible:outline-none border ${
+        className={`w-full p-2 pl-13 rounded text-sm 2xl:text-md font-normal focus-visible:outline-none border ${
           darkMode
             ? "bg-gray-200 text-gray-900 border-gray-400"
             : "bg-gray-800 text-gray-400 border-gray-600"
@@ -24,7 +24,7 @@ function SearchInput({ allCryptos, onSelectCrypto, darkMode }) {
         value={query}
         onChange={e => setQuery(e.target.value)} 
       />
-      <span className={`material-symbols-rounded absolute left-3 top-1/2 transform -translate-y-1/2 text-sm ${
+      <span className={`material-symbols-rounded absolute left-3 top-1/2 transform -translate-y-1/2 text-sm 2xl:text-md ${
         darkMode ? "text-gray-600" : "text-gray-400"}`}> 
         search
       </span>

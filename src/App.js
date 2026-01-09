@@ -49,39 +49,37 @@ function App() {
   };
 
   return (
-    <>
-      <div className="flex flex-col">
-        <Header 
-          allCryptos={allCryptos}
-          onSelectCrypto={setSelectedCrypto}
+  <div className="min-h-screen flex flex-col w-full">
+    <Header 
+      allCryptos={allCryptos}
+      onSelectCrypto={setSelectedCrypto}
+      darkMode={darkMode}
+      setDarkMode={setDarkMode}
+    />
+    <div className={`flex flex-col md:flex-row flex-1 ${darkMode ? "bg-gray-100" : "bg-gray-950/95"}`}>
+      <Sidebar 
+        favorites={favorites}
+        onSelectCrypto={setSelectedCrypto}
+        darkMode={darkMode}
+      />
+      <main className="flex-1 px-2 sm:px-6">
+        <CryptoList 
+          cryptoList={cryptoList}
+          onToggleFavorite={handleToggleFavorite}
+          favorites={favorites}
           darkMode={darkMode}
-          setDarkMode={setDarkMode}
         />
-        <div className={`flex flex-col md:flex-row flex-1 ${darkMode ? "bg-gray-100" : "bg-gray-950/95"}`}>
-          <Sidebar 
-            favorites={favorites}
-            onSelectCrypto={setSelectedCrypto}
-            darkMode={darkMode}
-          />
-          <main className="flex-1 px-2 sm:px-6">
-            <CryptoList 
-              cryptoList={cryptoList}
-              onToggleFavorite={handleToggleFavorite}
-              favorites={favorites}
-              darkMode={darkMode}
-            />
-            <CryptoDetail
-              crypto={selectedCrypto || cryptoList[0] || {}}
-              onToggleFavorite={handleToggleFavorite}
-              isFavorite={favorites.some((c) => c.id === (selectedCrypto || cryptoList[0] || {}).id)}
-              darkMode={darkMode}
-            />
-          </main>
-        </div>
-      </div>
-      <Footer darkMode={darkMode}/>
-    </>
-  );
+        <CryptoDetail
+          crypto={selectedCrypto || cryptoList[0] || {}}
+          onToggleFavorite={handleToggleFavorite}
+          isFavorite={favorites.some((c) => c.id === (selectedCrypto || cryptoList[0] || {}).id)}
+          darkMode={darkMode}
+        />
+      </main>
+    </div>
+    <Footer darkMode={darkMode}/>
+  </div>
+);
 }
 
 export default App;
