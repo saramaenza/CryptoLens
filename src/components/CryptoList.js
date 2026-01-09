@@ -1,48 +1,14 @@
-import { useEffect, useState, useRef } from "react";
+import { useState } from "react";
 import CryptoItem from "./CryptoItem";
 import PropTypes from "prop-types";
 
-const coins = [
-  { id: "bitcoin", symbol: "BTC", name: "Bitcoin"},
-  { id: "ethereum", symbol: "ETH", name: "Ethereum"},
-  { id: "binancecoin", symbol: "BNB", name: "Binance Coin"},
-  { id: "solana", symbol: "SOL", name: "Solana"},
-  { id: "avalanche-2", symbol: "AVAX", name: "Avalanche" },
-];
 
-function CryptoList({ onSelectCrypto, onCryptoListUpdate }) {
-  const [cryptos, setCryptos] = useState([]);
-  const [loading, setLoading] = useState(true);
+function CryptoList({ onSelectCrypto, cryptoList, onToggleFavorite, favorites }) {
   const [sortBy, setSortBy] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
-  const intervalRef = useRef();
-
-  // Fetching data from CoinGecko API
-  const fetchData = async () => {
-    setLoading(true);
-    const ids = coins.map((c) => c.id).join(",");
-    const url = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=eur&ids=${ids}&order=market_cap_desc&per_page=10&page=1&sparkline=false`;
-    const res = await fetch(url);
-    const data = await res.json();
-    setCryptos(data);
-    console.log(data);
-    setLoading(false);
-  };
-
-  useEffect(() => {
-    fetchData();
-    intervalRef.current = setInterval(fetchData, 60000); // aggiorna ogni 60s
-    return () => clearInterval(intervalRef.current);
-  }, []);
-
-  useEffect(() => {
-    if (cryptos.length && onCryptoListUpdate) {
-      onCryptoListUpdate(cryptos);
-    }
-  }, [cryptos, onCryptoListUpdate]);
 
   // Sorting
-  const filtered = cryptos
+  const filtered = cryptoList
     .sort((a, b) => {
       let cmp = 0;
       if (sortBy === "name") {

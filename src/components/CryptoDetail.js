@@ -14,7 +14,7 @@ import {
 
 ChartJS.register(LineElement, CategoryScale, LinearScale, PointElement, Tooltip, Legend, BarElement);
 
-function CryptoDetail({ crypto }) {
+function CryptoDetail({ crypto, onToggleFavorite, isFavorite }) {
   const [days, setDays] = useState(1);
   const [history, setHistory] = useState([]);
   const [volumeHistory, setVolumeHistory] = useState([]);
@@ -143,6 +143,19 @@ function CryptoDetail({ crypto }) {
           <span className="font-normal ml-2">
             ({crypto.symbol ? crypto.symbol.toUpperCase() : "?"})
           </span>
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onToggleFavorite(crypto);
+            
+            }}
+            className={`material-symbols-outlined text-xl pl-3 cursor-pointer ${
+              isFavorite ? "text-amber-400" : "text-gray-400"
+            }`}
+            aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+          >
+            star
+          </button>
         </h2>
         <div className="flex space-x-6 items-center">
           <span className="font-medium tracking-wider text-green-400">

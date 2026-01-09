@@ -1,9 +1,10 @@
 import PropTypes from "prop-types";
 
-function CryptoItem({ crypto, onSelect }) {
+function CryptoItem({ crypto, onSelect, onToggleFavorite, isFavorite, index }) {
+  const bgColor = index % 2 === 0 ? "bg-gray-800" : "bg-gray-900";
   return (
-    <tr className="border-b border-gray-700 cursor-pointer" onClick={onSelect}>
-      <td className="py-2 px-4 font-medium">
+    <tr className={`border-t ${bgColor} border-gray-600 cursor-pointer`} onClick={onSelect}>
+      <td className="py-2 px-4 font-medium pl-5">
         <img
           src={crypto.image}
           alt={crypto.name}
@@ -36,6 +37,21 @@ function CryptoItem({ crypto, onSelect }) {
         {crypto.market_cap !== undefined && crypto.market_cap !== null
           ? `€${crypto.market_cap.toLocaleString(undefined, { maximumFractionDigits: 0 })}`
           : "-"}
+      </td>
+      <td className="py-2 px-4 text-center">
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onToggleFavorite(crypto);
+           
+          }}
+          className={`material-symbols-outlined text-xl cursor-pointer ${
+            isFavorite ? "text-amber-400" : "text-gray-400"
+          }`}
+          aria-label={isFavorite ? "Remove from favorites" : "Add to favorites"}
+        >
+          star
+        </button>
       </td>
     </tr>
   );
