@@ -9,7 +9,11 @@ function App() {
 
   const [selectedCrypto, setSelectedCrypto] = useState(null);
   const [cryptoList, setCryptoList] = useState([]); // top 5 cryptos displayed
-  const [favorites, setFavorites] = useState([]);
+  const [favorites, setFavorites] = useState(() => {
+    // Get favorites from localStorage on initial load
+    const saved = localStorage.getItem("favorites");
+    return saved ? JSON.parse(saved) : [];
+  });
   const [allCryptos, setAllCryptos] = useState([]); // all 50 cryptos
   const [darkMode, setDarkMode] = useState(false);
 
@@ -29,6 +33,11 @@ function App() {
 
     return () => clearInterval(interval); 
   }, []);
+
+  // Save favorites to localStorage whenever they change
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
 
   // Handle favorite toggling: add or remove from favorites
   const handleToggleFavorite = (crypto) => {
