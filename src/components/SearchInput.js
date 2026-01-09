@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function SearchInput({ allCryptos, onSelectCrypto }) {
+function SearchInput({ allCryptos, onSelectCrypto, darkMode }) {
   const [query, setQuery] = useState("");
   const filtered = query.length > 0
     ? allCryptos.filter(
@@ -15,15 +15,20 @@ function SearchInput({ allCryptos, onSelectCrypto }) {
       <input
         type="text"
         placeholder="Search..."
-        className="w-full p-2 pl-13 rounded bg-gray-800 text-sm text-gray-400 font-normal focus-visible:outline-none border border-gray-600"
+        className={`w-full p-2 pl-13 rounded text-sm font-normal focus-visible:outline-none border ${
+          darkMode
+            ? "bg-gray-200 text-gray-900 border-gray-400"
+            : "bg-gray-800 text-gray-400 border-gray-600"
+        }`}
         value={query}
-        onChange={e => setQuery(e.target.value)}
+        onChange={e => setQuery(e.target.value)} 
       />
-      <span className="material-symbols-rounded absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 text-sm">
+      <span className={`material-symbols-rounded absolute left-3 top-1/2 transform -translate-y-1/2 text-sm ${
+        darkMode ? "text-gray-600" : "text-gray-400"}`}> 
         search
       </span>
       {query && (
-        <ul className="absolute z-10 bg-gray-800 text-white w-full mt-1 rounded shadow max-h-60 overflow-y-auto">
+        <ul className={`absolute z-10 ${darkMode ? "bg-gray-200 text-gray-900" : "bg-gray-800 text-white"} w-full mt-1 rounded shadow max-h-60 overflow-y-auto`}>
           {filtered.length === 0 && (
             <li className="p-2 text-gray-400">No results</li>
           )}
