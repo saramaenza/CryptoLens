@@ -30,8 +30,6 @@ function App() {
     return () => clearInterval(interval); 
   }, []);
 
-  console.log("cryptoList", cryptoList);
-
   // Handle favorite toggling: add or remove from favorites
   const handleToggleFavorite = (crypto) => {
     setFavorites((prev) =>
