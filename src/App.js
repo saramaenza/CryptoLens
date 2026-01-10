@@ -68,6 +68,7 @@ function App() {
           onToggleFavorite={handleToggleFavorite}
           favorites={favorites}
           darkMode={darkMode}
+          onSelectCrypto={setSelectedCrypto}
         />
         <CryptoDetail
           crypto={selectedCrypto || cryptoList[0] || {}}
