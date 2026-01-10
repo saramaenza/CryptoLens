@@ -19,16 +19,24 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
   const [days, setDays] = useState(1);
   const [history, setHistory] = useState([]);
   const [volumeHistory, setVolumeHistory] = useState([]);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!crypto.id) return;
-    // Fetch historical data
     const fetchHistory = async () => {
-      const url = `https://api.coingecko.com/api/v3/coins/${crypto.id}/market_chart?vs_currency=eur&days=${days}`;
-      const res = await fetch(url);
-      const data = await res.json();
-      setHistory(data.prices || []);
-      setVolumeHistory(data.total_volumes || []);
+      try {
+        setError(null);
+        const url = `https://api.coingecko.com/api/v3/coins/${crypto.id}/market_chart?vs_currency=eur&days=${days}`;
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Failed to fetch data. Please try again later.");
+        const data = await res.json();
+        setHistory(data.prices || []);
+        setVolumeHistory(data.total_volumes || []);
+      } catch (err) {
+        setError("Failed to load historical data. Please try again later.");
+        setHistory([]);
+        setVolumeHistory([]);
+      }
     };
     fetchHistory();
   }, [crypto.id, days]);
@@ -42,7 +50,7 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
     }),
     datasets: [
       {
-        label: "Prezzo (EUR)",
+        label: "Price (EUR)",
         data: history.map(([, price]) => price),
         borderColor: "#fbbf24",
         pointRadius: 0,
@@ -136,7 +144,6 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
 
   return (
     <div className={`${!darkMode ? "border-gray-600 bg-gray-800 text-white" : "border-gray-400 bg-gray-200 text-gray-900"} p-4 sm:p-6 mb-6 border mt-4 mx-3 lg:mx-0 sm:mx-0 rounded`}>
-      
       {Object.keys(crypto).length > 0 ? (
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <h2 className="text-md 2xl:text-lg mb-0 font-bold flex items-center flex-wrap">
@@ -251,6 +258,11 @@ function CryptoDetail({ crypto, onToggleFavorite, isFavorite, darkMode }) {
       <div className="mt-4 text-sm 2xl:text-md text-gray-500 h-screen flex items-center justify-center">
         Detailed information about the selected cryptocurrency will appear here.
       </div>
+      )}
+      {error && (
+        <div className="mt-4 p-2 rounded bg-red-200 text-red-800 border border-red-400">
+          {error}
+        </div>
       )}
     </div>
   );
