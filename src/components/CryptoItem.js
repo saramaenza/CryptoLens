@@ -1,9 +1,11 @@
 import PropTypes from "prop-types";
 
-function CryptoItem({ crypto, onToggleFavorite, isFavorite, index, darkMode }) {
+function CryptoItem({ crypto, onSelectCrypto, onToggleFavorite, isFavorite, index, darkMode }) {
   const bgColor = index % 2 === 0 ? (darkMode ? "bg-gray-200" : "bg-gray-800") : (darkMode ? "bg-gray-100" : "bg-gray-900");
   return (
-    <tr className={`border-t ${bgColor} ${darkMode ? "border-gray-400 text-gray-900" : "border-gray-600 text-white"} cursor-pointer`}>
+    <tr 
+      className={`border-t ${bgColor} ${darkMode ? "border-gray-400 text-gray-900" : "border-gray-600 text-white"} cursor-pointer`}
+      onClick={() => onSelectCrypto(crypto)}>
       <td className="py-2 px-2 sm:px-4 font-medium pl-2 sm:pl-5">
         <img
           src={crypto.image}

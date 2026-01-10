@@ -2,7 +2,7 @@ import { useState } from "react";
 import CryptoItem from "./CryptoItem";
 import PropTypes from "prop-types";
 
-function CryptoList({ cryptoList, onToggleFavorite, favorites, darkMode }) {
+function CryptoList({ cryptoList, onToggleFavorite, favorites, darkMode, onSelectCrypto }) {
   const [sortBy, setSortBy] = useState("name");
   const [sortDir, setSortDir] = useState("asc");
 
@@ -79,6 +79,7 @@ function CryptoList({ cryptoList, onToggleFavorite, favorites, darkMode }) {
                     isFavorite={favorites.some((c) => c.id === crypto.id)}
                     index={idx}
                     darkMode={darkMode}
+                    onSelectCrypto={() => onSelectCrypto(crypto)}
                 />
             ))}
             </tbody>
